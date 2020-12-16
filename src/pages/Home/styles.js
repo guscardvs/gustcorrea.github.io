@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Scrollbars from "react-custom-scrollbars";
 
 export const Container = styled.main`
   min-height: 100%;
@@ -85,35 +86,41 @@ export const Wrapper = styled.div`
 
 export const Photo = styled.img`
   @media only screen and (min-width: 768px) {
-    width: 16rem;
-    height: 24rem;
     margin-right: 2rem;
   }
+  width: 16rem;
+  height: 24rem;
   box-shadow: 1px 1px 1px #303030;
 `;
+export const InfoOuter = styled.div`
+  padding: 0.35rem 0 0.35rem 0.75rem;
 
-export const Info = styled.div`
-  @media only screen and (min-width: 768px) {
-    width: 26rem;
+  @media only screen and (max-width: 767px) {
+    width: 16rem;
     height: 24rem;
-    align-items: flex-start;
-    justify-content: flex-start;
   }
   background-color: rgba(63, 81, 181, 1);
   box-shadow: 1px 1px 1px #303030;
+`;
+
+export const Info = styled(Scrollbars)`
+  @media only screen and (min-width: 768px) {
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 26rem !important;
+    height: 24rem !important;
+  }
+
   color: white;
   display: flex;
   flex-direction: column;
-  padding: 0.35rem 0.75rem;
-  @media (max-width: 767px) {
-    overflow-x: scroll;
-  }
+  overflow-x: scroll;
 `;
 
 export const Item = styled.div`
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 95%;
   margin: 0.3rem 0;
   justify-content: space-between;
   align-items: center;
@@ -141,7 +148,7 @@ export const TextBlock = styled.div`
   background-color: rgba(48, 63, 159, 1);
   margin-top: 1rem;
   padding: 0.35rem 0.75rem;
-  width: 100%;
+  width: 95%;
   transition: background-color 0.2s ease;
   & .inner {
     display: flex;
@@ -149,6 +156,15 @@ export const TextBlock = styled.div`
     font-size: 14px;
     & *::before {
       content: " - ";
+    }
+    & a {
+      border-bottom: 1px dashed #aaa;
+      transition: background-color 0.1s ease;
+      padding: 3px 5px;
+      width: 30%;
+      &:hover {
+        background-color: rgba(48, 63, 159, 1);
+      }
     }
   }
   &:hover {
