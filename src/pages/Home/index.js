@@ -15,7 +15,7 @@ import MyPhoto from "../../assets/img/me.webp";
 function Home() {
   const [rotate, setRotate] = useState(false);
   const phone = window.matchMedia("(max-width: 768px)").matches;
-  console.log(phone);
+
   return (
     <Container>
       <Card>
