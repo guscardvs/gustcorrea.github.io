@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   Container,
+  Flip,
   Heading,
   Info,
   Item,
@@ -12,37 +13,52 @@ import {
 import MyPhoto from "../../assets/img/me.webp";
 
 function Home() {
+  const [rotate, setRotate] = useState(false);
+  const phone = window.matchMedia("(max-width: 768px)").matches;
+  console.log(phone);
   return (
     <Container>
       <Card>
-          <Heading className="title">Gustavo Cardoso Correa</Heading>
-        <Wrapper>
-          <Photo src={MyPhoto} type="image/webp" />
-          <Info>
+        <Heading className="title">Gustavo Cardoso Correa</Heading>
+        {phone ? <Flip className="title">Flip!</Flip> : <></>}
+        <Wrapper
+          onClick={() => {
+            setRotate(!rotate);
+          }}
+          className={rotate ? "rotate" : ""}
+        >
+          <Photo src={MyPhoto} type="image/webp" className="flip" />
+          <Info className="back-flip">
             <Item>
-              <span>Currently Live in: </span>
+              <span>I Live in: </span>
               <span>São Paulo - SP, Brasil </span>
             </Item>
             <Item>
               <span>Working with: </span>
-              <a href="https://www.resolvaclub.com">Resolva Club</a>
+              <a
+                href="https://www.resolvaclub.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Resolva Club
+              </a>
             </Item>
             <TextBlock>
-              <span className="title">Spoken Languages: </span>
+              <span className="title">I speak: </span>
               <div className="inner">
                 <span>Portuguese</span>
                 <span>English</span>
               </div>
             </TextBlock>
             <TextBlock>
-              <span className="title">Programming Languages: </span>
+              <span className="title">I develop with: </span>
               <div className="inner">
                 <span>Python</span>
                 <span>JavaScript</span>
               </div>
             </TextBlock>
             <TextBlock>
-              <span className="title">Currently learning:</span>
+              <span className="title">I am learning:</span>
               <div className="inner">
                 <span>TypeScript and React Native</span>
                 <span>Golang</span>
